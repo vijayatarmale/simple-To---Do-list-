@@ -1,0 +1,42 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ToDoList {
+    public static void main(String[] args) {
+        ArrayList<String> toDoList = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+
+        while (true) {
+            System.out.println("To-Do List Menu:");
+            System.out.println("1. Add a task");
+            System.out.println("2. List tasks");
+            System.out.println("3. Quit");
+            System.out.print("Enter your choice: ");
+            
+            choice = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline character
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter a task: ");
+                    String task = scanner.nextLine();
+                    toDoList.add(task);
+                    System.out.println("Task added: " + task);
+                    break;
+                case 2:
+                    System.out.println("To-Do List:");
+                    for (int i = 0; i < toDoList.size(); i++) {
+                        System.out.println((i + 1) + ". " + toDoList.get(i));
+                    }
+                    break;
+                case 3:
+                    System.out.println("Goodbye!");
+                    scanner.close();
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+}
